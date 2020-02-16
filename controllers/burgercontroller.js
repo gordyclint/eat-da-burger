@@ -9,8 +9,30 @@ function burgerController (app) {
         });
     });
 
-    app.post("/api/")
+    app.post("/api/burgers", function(req, res) {
+        burgerModels.create(req.body, function(data) {
+            res.json(data);
+        });
+    });
 
+    app.put("/api/burgers/:id", function(req, res) {
+        const newBurger = req.body;
+        newBurger.id = req.params.id;
+
+        console.log(newBurger);
+
+        burgerModels.update(newBurger, function(data) {
+            res.json(data);
+        })
+    });
+
+    app.delete("/api/burgers/:id", function(req, res) {
+        const id = req.params.id;
+        console.log(id);
+        burgerModels.delete(id, function(data) {
+            res.json(data);
+        })
+    });
 
 };
 

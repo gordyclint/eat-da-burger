@@ -1,22 +1,32 @@
 <div class="container">
     <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 mt-4">
             {{#each burgers}}
             {{#unless devoured}}
-            <span>Burger Name: {{burger_name}} <button class="update-burger" data-id="{{id}}">Devour!</button> </span>
+            <span class="mt-3">{{burger_name}} <button class="update-burger p-2" data-id="{{id}}">Devour!</button> </span>
             <br>
             {{/unless}}
             {{/each}}
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mt-4">
+            <img src="assets/images/burger.jpg" alt="Burger" width="300" height="200">
         </div>
-        <div class="col-md-4">
+        <div class="col-md-4 mt-4">
             {{#each burgers}}
             {{#if devoured}}
-            <span>Devoured: {{burger_name}} </span>
+            <span>You have devoured a {{burger_name}} </span>
+            <button id="delete-burger" class="p-2" data-id={{id}}>Remove</button>
             <br>
             {{/if}}
             {{/each}}
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-4 mx-auto mt-4">
+            <input type="text" id="burger_name" class="p-2">
+            <button id="add-burger" class="p-2">Add Burger</button>
+            <p>Enter a burger and click "Add Burger"</p>
         </div>
     </div>
 </div>
